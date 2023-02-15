@@ -3,23 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// guest visit
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// user logged in
 Route::get('/home', [HomeController::class, 'redirect']);
 
+// logout route
+Route::group(['middleware' => ['auth']], function() {
+   Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+});
+
+// jetstream 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
