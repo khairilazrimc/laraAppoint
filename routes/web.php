@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 // guest visit
 Route::get('/', [HomeController::class, 'index']);
@@ -13,6 +14,14 @@ Route::get('/home', [HomeController::class, 'redirect']);
 Route::group(['middleware' => ['auth']], function() {
    Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 });
+
+// admin add doctor
+Route::get('/add_doctor_view', [AdminController::class, 'addview']);
+
+
+
+
+
 
 // jetstream 
 Route::middleware([
