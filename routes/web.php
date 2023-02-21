@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 // guest visit
 Route::get('/', [HomeController::class, 'index']);
@@ -15,13 +16,9 @@ Route::group(['middleware' => ['auth']], function() {
    Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 });
 
-// admin add doctor
+// admin
 Route::get('/add_doctor_view', [AdminController::class, 'addview']);
-
-
-
-
-
+Route::post('/upload_doctor', [AdminController::class, 'upload']);
 
 // jetstream 
 Route::middleware([
