@@ -19,15 +19,15 @@ class AdminController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $teaser_image = time().'.'.$image->getClientOriginalExtension();
+            $imagename = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/doctorimages');
-            $image->move($destinationPath, $image);
+            $image->move($destinationPath, $imagename);
         } else {
             dd('Request Has No File');
         }
 
 
-        $doctor -> image = $image;
+        $doctor -> image = $imagename;
         $doctor -> name = $request -> name;
         $doctor -> phone = $request -> phone;
         $doctor -> speciality = $request -> speciality;
