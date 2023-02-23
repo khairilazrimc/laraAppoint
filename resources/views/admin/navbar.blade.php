@@ -165,3 +165,9 @@
 </nav>
 <div class="main-panel">
   <div class="content-wrapper">
+
+@if(session()->has('message'))
+<div class="alert alert-success" id="success-alert">
+  {{ session()->get('message') }}
+</div>
+@endif

@@ -2,12 +2,6 @@
 @include('admin.sidebar')
 @include('admin.navbar')
 
-@if(session()->has('message'))
-<div class="alert alert-success" id="success-alert">
-  {{ session()->get('message') }}
-</div>
-@endif
-
 <!-- @include('admin.main') -->
 <div class="row">
   <div class="col-xl-3 col-md-6 col-xm-12">
@@ -41,11 +35,3 @@
 
 
 @include('admin.footer')
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-    $("#success-alert").slideUp(500);
-  });
-});
-</script>
