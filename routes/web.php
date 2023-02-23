@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth']], function() {
 
 // guest
 Route::post('/make_appointment', [HomeController::class, 'make_appointment']);
-Route::get('/myappointment', [HomeController::class, 'myappointment']);
+Route::get('/my_appointment', [HomeController::class, 'my_appointment'])->name('my_appointment');
+Route::get('/cancel_appointment/{id}', [HomeController::class, 'cancel_appointment']);
 
 
 

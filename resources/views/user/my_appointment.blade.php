@@ -4,21 +4,25 @@
 <div class="page-section">
   <div class="container">
     <h1 class="text-center mb-5 wow fadeInUp">My Appointments</h1>
-    <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+    <div class="wow fadeInUp row align-items-center">
       
-      @foreach ($doctor as $doctorz)        
-      <div class="item">
+      @foreach ($appointments as $appointment)        
+      <div class="item col-md-3">
         <div class="card-doctor">
           <div class="header">
-            <img src="doctorimages/{{ $doctorz->image }}" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
           <div class="body">
-            <p class="text-xl mb-0">{{ $doctorz->name }}</p>
-            <span class="text-sm text-grey">{{ $doctorz->speciality }}</span>
+            <p class="text-xl mb-0">Name: {{ $appointment->name }}</p>
+            <p class="text-sm text-grey mb-0">Email: {{ $appointment->email }}</p>
+            <p class="text-sm text-grey mb-0">Phone: {{ $appointment->phone }}</p>
+            <p class="text-sm text-grey mb-0">Date: {{ $appointment->date }}</p>
+            <p class="text-sm text-grey mb-0">Status: {{ $appointment->status }}</p>
+            <br>
+            <p class="text-sm text-grey mb-0">Doctor: {{ $appointment->doctor }}</p>
+            <p class="text-sm text-grey mb-0">Message: {{ $appointment->message }}</p>
+          </div>
+            <div class="meta align-items-center">
+              <a href="{{ url('cancel_appointment', $appointment->id) }}" onclick="return confirm('Please confirm your appointment cancellation.')" title="Cancel Appointment">X</a>
+            </div>
           </div>
         </div>
       </div>

@@ -166,8 +166,16 @@
 <div class="main-panel">
   <div class="content-wrapper">
 
-@if(session()->has('message'))
+<!-- print success message -->
+@if(session()->has('success'))
 <div class="alert alert-success" id="success-alert">
-  {{ session()->get('message') }}
+  {{ session()->get('success') }}
+</div>
+@endif
+
+<!-- print danger message -->
+@if(session()->has('danger'))
+<div class="alert alert-danger" id="danger-alert">
+  {{ session()->get('danger') }}
 </div>
 @endif

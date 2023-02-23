@@ -34,7 +34,7 @@ class AdminController extends Controller {
     $doctor->phone = $request->phone;
     $doctor->speciality = $request->speciality;
     $doctor->save(); 
-    return redirect()->back()->with('message', 'Doctor succesfully added.');
+    return redirect()->back()->with('success', 'Doctor succesfully added.');
   
   }
 

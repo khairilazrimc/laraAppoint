@@ -37,7 +37,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
+      <a class="navbar-brand" href="/"><span class="text-primary">One</span>-Health</a>
 
       <form action="#">
         <div class="input-group input-navbar">
@@ -75,7 +75,7 @@
             @auth
 
               <li class="nav-item">
-                <a class="btn btn-primary ml-lg-3" href="{{ url('myappointment' )}}">Appointment</a>
+                <a class="btn btn-primary ml-lg-3" href="{{ route('my_appointment' )}}">Appointment</a>
               </li>
               <li class="nav-item">
                 <a class="btn btn-secondary ml-lg-3" href="{{ route('logout') }}">Logout</a>

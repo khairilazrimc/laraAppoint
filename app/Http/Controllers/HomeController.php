@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
@@ -14,7 +15,7 @@ class HomeController extends Controller {
   public function index() {
 
     if (Auth::id()) {
-      return redirct('home');
+      return redirect('home');
     }
 
     else {
@@ -76,17 +77,24 @@ class HomeController extends Controller {
 
   }
 
-  public function myappointment () {
+  public function my_appointment() {
 
     if (Auth::id()) {
-
-      $doctor = doctor::all();
-      return view('user.my_appointment', compact('doctor'));
+      $userid = Auth::user()->id;
+      $appointments = DB::table('appointments')->where('user_id', '=', $userid)->get();
+      return view('user.my_appointment', compact('appointments'));
     }
 
     else {
-      return redirect()->back()->with('danger', 'Please Login first.');
+      return redirect()->back()->with('danger', 'Please login first.');
 
     }
   }
+
+  public function cancel_appointment($id) {
+    $data = appointment::find($id);
+    $data->delete();
+    return redirect()->back()->with('success', 'Appointment successfully canceled.');
+  }
+
 }

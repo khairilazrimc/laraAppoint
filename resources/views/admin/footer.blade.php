@@ -9,13 +9,16 @@
 </div> <!-- end main-panel in navbar -->
 </div> <!-- end container-fluid page-body-wrapper in sidebar -->
 </div> <!-- end container-scroller in header -->
+
+<!-- dismiss message -->
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-    $("#success-alert").slideUp(500);
+  $("#alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#alert").slideUp(500);
   });
 });
 </script>
+
 <script src="template/corona/assets/vendors/js/vendor.bundle.base.js"></script>
 <script src="template/corona/assets/vendors/chart.js/Chart.min.js"></script>
 <script src="template/corona/assets/vendors/progressbar.js/progressbar.min.js"></script>
