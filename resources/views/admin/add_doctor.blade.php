@@ -6,7 +6,7 @@
   <div class="col-lg-6 col-sm-12">
     <form method="POST" action="{{ url('add_doctor_process') }}" enctype="multipart/form-data">
       @csrf
-      <div class="mt-5 text-muted">
+      <div class="text-muted">
         <h3>Create Doctor</h3>
       </div>
       <div class="mt-3">

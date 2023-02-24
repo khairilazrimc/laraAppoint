@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Appointment;
 use App\Models\Doctor;
+use Notification;
+use App\Notifications\SendMailNotification;
 
 class AdminController extends Controller {
 
@@ -23,7 +25,7 @@ class AdminController extends Controller {
 
   public function disapproveappointment($id) {
     $data = appointment::find($id);
-    $data->status = 'Disapprove';
+    $data->status = 'Disapproved';
     $data->save();
     return redirect()->back()->with('success', 'Status successfully updated.');
   }
@@ -81,5 +83,23 @@ class AdminController extends Controller {
     $doctor->speciality = $request->speciality;
     $doctor->save(); 
     return redirect()->back()->with('success', 'Doctor succesfully updated.');
+  }
+
+  public function mailview($id) {
+    $appointment = appointment::find($id);
+    return view('admin.email_view', compact('appointment'));
+  }
+
+  public function mailprocess(Request $request, $id) {
+    $appointment = appointment::find($id);
+    $details = [
+      'mailheader' => $request->mailheader,
+      'mailbody' => $request->mailbody,
+      'actiontext' => $request->actiontext,
+      'actionurl' => $request->actionurl,
+      'mailfooter' => $request->mailfooter
+    ];
+    Notification::send($appointment, new SendMailNotification($details));
+    return redirect()->back()->with('success', 'Mail successfully sent.');
   }
 }

@@ -50,3 +50,5 @@ Route::get('/add_doctor_view', [AdminController::class, 'adddoctorview']);
 Route::post('/add_doctor_process', [AdminController::class, 'adddoctorprocess']);
 Route::get('/update_doctor_view/{id}', [AdminController::class, 'updatedoctorview']);
 Route::post('/update_doctor_process/{id}', [AdminController::class, 'updatedoctorprocess']);
+Route::get('/mail_view/{id}', [AdminController::class, 'mailview']);
+Route::post('/mail_process/{id}', [AdminController::class, 'mailprocess']);

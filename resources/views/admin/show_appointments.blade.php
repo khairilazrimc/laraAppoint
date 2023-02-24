@@ -13,28 +13,29 @@
             <thead>
               <tr>
                 <th>Client</th>
-                <th>Contact</th>
                 <th>Doctor</th>
                 <th>Date</th>
                 <th>Message</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
 
               @foreach($appointments as $appointment)
               <tr>
-                <td>{{ $appointment->name }}</td>
-                <td class="lh-base">{{ $appointment->email }}<br>{{ $appointment->phone }}</td>
+                <td class="lh-base">{{ $appointment->name }}<br>{{ $appointment->email }}<br>{{ $appointment->phone }}</td>
                 <td>{{ $appointment->doctor }}</td>
                 <td>{{ $appointment->date }}</td>
                 <td>{{ $appointment->message }}</td>
-                <td class="">
-                  <label class="badge badge-dark">{{ $appointment->status }}</label>
-                  <br>
-                  <a href="{{ url('approve_appointment', $appointment->id) }}" class="btn btn-sm btn-success mt-2">Approve</a>
+                <td><label class="badge badge-dark">{{ $appointment->status }}</label></td>
+                <td>
+                  <a href="{{ url('approve_appointment', $appointment->id) }}" class="btn btn-sm btn-success">Approve</a>
                   <br>
                   <a href="{{ url('disapprove_appointment', $appointment->id) }}" class="btn btn-sm btn-danger mt-2">Disapprove</a>
+                  @if($appointment->status !== "Processing")
+                  <br><a href="{{ url('mail_view', $appointment->id) }}" class="btn btn-sm btn-light mt-2">Send Mail</a>
+                  @endif
                 </td>
               </tr>
               @endforeach
