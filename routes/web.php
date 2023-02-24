@@ -41,3 +41,6 @@ Route::get('/cancel_appointment/{id}', [HomeController::class, 'cancel_appointme
 // admin
 Route::get('/add_doctor_view', [AdminController::class, 'addview']);
 Route::post('/upload_doctor', [AdminController::class, 'upload']);
+Route::get('/show_appointment', [AdminController::class, 'showappointment']);
+Route::get('/approve_appointment/{id}', [AdminController::class, 'approveappointment']);
+Route::get('/disapprove_appointment/{id}', [AdminController::class, 'disapproveappointment']);

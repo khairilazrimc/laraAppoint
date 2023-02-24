@@ -168,14 +168,14 @@
 
 <!-- print success message -->
 @if(session()->has('success'))
-<div class="alert alert-success" id="success-alert">
+<div class="alert alert-success" id="alert">
   {{ session()->get('success') }}
 </div>
 @endif
 
 <!-- print danger message -->
 @if(session()->has('danger'))
-<div class="alert alert-danger" id="danger-alert">
+<div class="alert alert-danger" id="alert">
   {{ session()->get('danger') }}
 </div>
 @endif

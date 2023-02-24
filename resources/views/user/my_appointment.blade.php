@@ -1,5 +1,6 @@
 @include('user.partials.head')
 @include('user.partials.header')
+@include('user.partials.bannertop')
 
 <div class="page-section">
   <div class="container">
@@ -12,10 +13,11 @@
           <div class="header">
           <div class="body">
             <p class="text-xl mb-0">Name: {{ $appointment->name }}</p>
+            <p class="text-sm text-grey mb-0">Status: {{ $appointment->status }}</p>
+            <br>
             <p class="text-sm text-grey mb-0">Email: {{ $appointment->email }}</p>
             <p class="text-sm text-grey mb-0">Phone: {{ $appointment->phone }}</p>
             <p class="text-sm text-grey mb-0">Date: {{ $appointment->date }}</p>
-            <p class="text-sm text-grey mb-0">Status: {{ $appointment->status }}</p>
             <br>
             <p class="text-sm text-grey mb-0">Doctor: {{ $appointment->doctor }}</p>
             <p class="text-sm text-grey mb-0">Message: {{ $appointment->message }}</p>
@@ -32,5 +34,6 @@
   </div>
 </div>
 
+@include('user.partials.bannerbtm')
 @include('user.partials.footer')
 @include('user.partials.foot')

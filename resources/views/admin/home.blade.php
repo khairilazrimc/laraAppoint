@@ -1,5 +1,7 @@
-@include('admin.header')
-@include('admin.sidebar')
-@include('admin.navbar')
-@include('admin.main')
-@include('admin.footer')
+@include('admin.partials.header')
+@include('admin.partials.sidebar')
+@include('admin.partials.navbar')
+
+@include('admin.partials.main')
+
+@include('admin.partials.footer')

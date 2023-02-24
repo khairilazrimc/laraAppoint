@@ -1,10 +1,9 @@
-@include('admin.header')
-@include('admin.sidebar')
-@include('admin.navbar')
+@include('admin.partials.header')
+@include('admin.partials.sidebar')
+@include('admin.partials.navbar')
 
-<!-- @include('admin.main') -->
 <div class="row">
-  <div class="col-xl-3 col-md-6 col-xm-12">
+  <div class="col-lg-6 col-sm-12">
     <form method="POST" action="{{ url('upload_doctor') }}" enctype="multipart/form-data">
       @csrf
       <div class="mt-5 text-muted">
@@ -33,5 +32,4 @@
   </div>
 </div>
 
-
-@include('admin.footer')
+@include('admin.partials.footer')

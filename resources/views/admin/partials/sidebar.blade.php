@@ -12,6 +12,14 @@
         <span class="menu-title">Add Doctor</span>
       </a>
     </li>
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{ url('show_appointment') }}">
+        <span class="menu-icon">
+          <i class="mdi mdi-file-document-box"></i>
+        </span>
+        <span class="menu-title">Appointment</span>
+      </a>
+    </li>
   </ul>
 </nav>
 <div class="container-fluid page-body-wrapper">

@@ -86,8 +86,7 @@ class HomeController extends Controller {
     }
 
     else {
-      return redirect()->back()->with('danger', 'Please login first.');
-
+      return redirect()->back()->with('danger', 'Please login to view your appointment.');
     }
   }
 
