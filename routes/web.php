@@ -22,7 +22,9 @@ Route::middleware([
 Route::get('/', [HomeController::class, 'index']);
 
 // user logged in
-Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth');
+// verified only can enter
+// Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth', 'verified');
 
 // user log out
 Route::group(['middleware' => ['auth']], function() {
@@ -32,15 +34,19 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 // guest
-Route::post('/make_appointment', [HomeController::class, 'make_appointment']);
 Route::get('/my_appointment', [HomeController::class, 'my_appointment'])->name('my_appointment');
 Route::get('/cancel_appointment/{id}', [HomeController::class, 'cancel_appointment']);
+Route::post('/make_appointment', [HomeController::class, 'make_appointment']);
 
 
 
 // admin
-Route::get('/add_doctor_view', [AdminController::class, 'addview']);
-Route::post('/upload_doctor', [AdminController::class, 'upload']);
-Route::get('/show_appointment', [AdminController::class, 'showappointment']);
+Route::get('/show_appointments', [AdminController::class, 'showappointments']);
 Route::get('/approve_appointment/{id}', [AdminController::class, 'approveappointment']);
 Route::get('/disapprove_appointment/{id}', [AdminController::class, 'disapproveappointment']);
+Route::get('/show_doctors', [AdminController::class, 'showdoctors']);
+Route::get('/delete_doctor/{id}', [AdminController::class, 'deletedoctor']);
+Route::get('/add_doctor_view', [AdminController::class, 'adddoctorview']);
+Route::post('/add_doctor_process', [AdminController::class, 'adddoctorprocess']);
+Route::get('/update_doctor_view/{id}', [AdminController::class, 'updatedoctorview']);
+Route::post('/update_doctor_process/{id}', [AdminController::class, 'updatedoctorprocess']);

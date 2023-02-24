@@ -5,19 +5,19 @@
   </div>
   <ul class="nav">
     <li class="nav-item menu-items">
-      <a class="nav-link" href="{{ url('add_doctor_view') }}">
+      <a class="nav-link" href="{{ url('show_appointments') }}">
         <span class="menu-icon">
           <i class="mdi mdi-file-document-box"></i>
         </span>
-        <span class="menu-title">Add Doctor</span>
+        <span class="menu-title">Appointments</span>
       </a>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="{{ url('show_appointment') }}">
+      <a class="nav-link" href="{{ url('show_doctors') }}">
         <span class="menu-icon">
           <i class="mdi mdi-file-document-box"></i>
         </span>
-        <span class="menu-title">Appointment</span>
+        <span class="menu-title">Doctors</span>
       </a>
     </li>
   </ul>
