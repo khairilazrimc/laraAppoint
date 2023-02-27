@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Appointment;
 use App\Models\Doctor;
@@ -12,8 +13,13 @@ use App\Notifications\SendMailNotification;
 class AdminController extends Controller {
 
   public function showappointments () {
-    $appointments = appointment::all();
-    return view('admin.show_appointments', compact('appointments'));
+    if (Auth::id() and Auth::user()->usertype==1) {
+      $appointments = appointment::all();
+      return view('admin.show_appointments', compact('appointments'));
+    }
+    else {
+      return redirect()->back()->with('danger', 'Restricted Access');
+    }
   }
 
   public function approveappointment($id) {
@@ -34,8 +40,13 @@ class AdminController extends Controller {
 
 
   public function showdoctors () {
-    $doctors = doctor::all();
-    return view('admin.show_doctors', compact('doctors'));
+    if (Auth::id() and Auth::user()->usertype==1) {
+      $doctors = doctor::all();
+      return view('admin.show_doctors', compact('doctors'));
+    }
+    else {
+      return redirect()->back()->with('danger', 'Restricted Access');
+    }
   }
 
   public function deletedoctor($id) {
@@ -45,7 +56,12 @@ class AdminController extends Controller {
   }
 
   public function adddoctorview() {
-    return view('admin.add_doctor');
+    if (Auth::id() and Auth::user()->usertype==1) {
+      return view('admin.add_doctor');
+    }
+    else {
+      return redirect()->back()->with('danger', 'Restricted Access');
+    }
   }
 
   public function adddoctorprocess (Request $request) {
@@ -65,8 +81,13 @@ class AdminController extends Controller {
   }
 
   public function updatedoctorview($id) {
-    $doctor = doctor::find($id);
-    return view('admin.update_doctor', compact('doctor'));
+    if (Auth::id() and Auth::user()->usertype==1) {
+      $doctor = doctor::find($id);
+      return view('admin.update_doctor', compact('doctor'));
+    }
+    else {
+      return redirect()->back()->with('danger', 'Restricted Access');
+    }
   }
 
   public function updatedoctorprocess (Request $request, $id) {
@@ -86,8 +107,13 @@ class AdminController extends Controller {
   }
 
   public function mailview($id) {
-    $appointment = appointment::find($id);
-    return view('admin.email_view', compact('appointment'));
+    if (Auth::id() and Auth::user()->usertype==1) {
+      $appointment = appointment::find($id);
+      return view('admin.email_view', compact('appointment'));
+    }
+    else {
+      return redirect()->back()->with('danger', 'Restricted Access');
+    }
   }
 
   public function mailprocess(Request $request, $id) {
